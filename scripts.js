@@ -7,7 +7,7 @@ function findRecipes() {
 
     if (enteredIngredients.length === 0) {
         resultContainer.innerHTML = '<p>Please enter some ingredients.</p>';
-        return;
+        return;  // Correctly placed return statement
     }
 
     // Display loading message
@@ -19,7 +19,7 @@ function findRecipes() {
 
         if (matchingRecipes.length === 0) {
             resultContainer.innerHTML = '<p>No recipes found with the entered ingredients.</p>';
-            return;
+            return;  // Correctly placed return statement
         }
 
         const resultHTML = matchingRecipes.map(recipe => {
