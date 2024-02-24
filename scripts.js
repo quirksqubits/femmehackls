@@ -1,3 +1,5 @@
+// scripts.js
+
 function findRecipes() {
     const ingredientsInput = document.getElementById('ingredients');
     const resultContainer = document.getElementById('result');
@@ -8,23 +10,29 @@ function findRecipes() {
         return;
     }
 
-    const matchingRecipes = filterRecipes(enteredIngredients);
+    // Display loading message
+    resultContainer.innerHTML = '<p>Loading...</p>';
 
-    if (matchingRecipes.length === 0) {
-        resultContainer.innerHTML = '<p>No recipes found with the entered ingredients.</p>';
-        return;
-    }
+    // Simulate a delay (you can remove this in a real-world scenario)
+    setTimeout(() => {
+        const matchingRecipes = filterRecipes(enteredIngredients);
 
-    const resultHTML = matchingRecipes.map(recipe => {
-        return `
-            <div>
-                <h2>${recipe.name}</h2>
-                <p>${recipe.instructions}</p>
-            </div>
-        `;
-    }).join('');
+        if (matchingRecipes.length === 0) {
+            resultContainer.innerHTML = '<p>No recipes found with the entered ingredients.</p>';
+            return;
+        }
 
-    resultContainer.innerHTML = resultHTML;
+        const resultHTML = matchingRecipes.map(recipe => {
+            return `
+                <div>
+                    <h2>${recipe.name}</h2>
+                    <p>${recipe.instructions}</p>
+                </div>
+            `;
+        }).join('');
+
+        resultContainer.innerHTML = resultHTML;
+    }, 1000); // Simulated delay of 1 second (remove in a real-world scenario)
 }
 
 function filterRecipes(enteredIngredients) {
